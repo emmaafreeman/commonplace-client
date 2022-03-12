@@ -1,0 +1,18 @@
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+.footer_image {
+  max-width: 5rem;
+  margin: 1rem 2rem;
+}
+
+.footer_nav {
+  width: 100%;
+}
+
+/* .footer {
+  position: relative;
+  min-height: 100vh;
+} */
