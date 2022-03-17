@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import { useHistory } from 'react-router-dom';
-import { CommonplaceContext } from "./CommonplaceProvider.js"
+import { CommonplaceContext } from "../provider/CommonplaceProvider.js"
 import "./Commonplace.css"
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
