@@ -1,11 +1,13 @@
 import React, { useContext, useEffect} from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
-import { CommonplaceContext } from "./CommonplaceProvider"
+import { CommonplaceContext } from "../provider/CommonplaceProvider"
 import "./Commonplace.css"
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from "react-bootstrap/Container";
 import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom"
+
 
 export const EntrySearch = () => {
   // const { getApiMovies, apiMovies, getApiMovieById} = useContext(MovieContext)
@@ -34,15 +36,17 @@ export const EntrySearch = () => {
 
   return (
     <>
-      <h1>Entries</h1>
+      {/* <h1>Entries</h1>
         <ul>
           {
             entries.map(entry =>
-              <li>{entry.title}</li>
+              <li key={entry.id}>
+                <Link className="text-black" to={`/entries/detail/${entry.id}`}>{entry.title}</Link>
+              </li>
             )
           }
-        </ul>
-      {/* <Container className="text-center">
+        </ul> */}
+      <Container className="text-center">
         <h1 className="page_title">Movie Logger</h1>
         <Form className="search_form text-center" onSubmit={searchResults}>
           <Form.Group className="mb-3">
@@ -65,7 +69,7 @@ export const EntrySearch = () => {
             </Card>
             )
         }
-        </div> */}
+        </div>
     </>
   )
 }
