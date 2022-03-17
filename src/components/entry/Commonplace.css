@@ -1,0 +1,41 @@
+.movie_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 7rem;
+}
+
+.movie_card {
+  margin: 10px;
+}
+
+.search_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 7rem;
+}
+
+.search_card {
+  margin: 10px;
+}
+
+.page_title {
+  margin: 2rem;
+}
+
+.form_button {
+  margin: 1rem;
+}
+
+.detail {
+  padding-bottom: 7rem;
+}
+
+.detail_card {
+  margin: 2rem;
+}
+
+.form {
+  padding-bottom: 7rem;
+}

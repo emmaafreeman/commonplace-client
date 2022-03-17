@@ -1,6 +1,10 @@
 import React from "react";
 import { Route } from "react-router-dom";
-
+import { CommonplaceProvider } from "./entry/CommonplaceProvider";
+import { EntrySearch } from "./entry/EntrySearch";
+import { EntryDetail } from "./entry/EntryDetail";
+import { EditEntryForm } from "./entry/EditEntryForm";
+import { AddEntryForm } from "./entry/AddEntryForm";
 
 
 export const ApplicationViews = () => {
@@ -12,29 +16,23 @@ export const ApplicationViews = () => {
           lineHeight: "1.75rem",
         }}
       >
-        {/* <ProfileProvider>
-          <Route exact path="/profile">
-            <Profile />
-          </Route>
-        </ProfileProvider>
-
-        <GameProvider>
+        <CommonplaceProvider>
           <Route exact path="/">
-            <GameList />
+            <EntrySearch />
           </Route>
-          <Route exact path="/games/new">
-            <GameForm />
+
+          <Route exact path="/entries/detail/:entryId">
+            <EntryDetail />
           </Route>
-        </GameProvider>
-        
-        <EventProvider>
-          <Route exact path="/events">
-            <EventList />
+
+          <Route path="/entries/edit/:entryId">
+            <EditEntryForm />
           </Route>
-          <Route exact path="/events/new">
-            <EventForm />
+
+          <Route path="/entries/add">
+            <AddEntryForm />
           </Route>
-        </EventProvider> */}
+        </CommonplaceProvider>
       </main>
     </>
   );
