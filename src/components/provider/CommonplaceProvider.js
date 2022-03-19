@@ -41,7 +41,10 @@ export const CommonplaceProvider = (props) => {
       body: JSON.stringify(entryObj)
     })
     .then((response) => response.json())
-    .then(setEntries);
+    .then((entryObj) => {
+      getEntries()
+      return entryObj
+    });
 };
 
   // Delete an entry from the database
@@ -101,7 +104,7 @@ export const CommonplaceProvider = (props) => {
         body: JSON.stringify(topicObj)
       })
       .then((response) => response.json())
-      .then(setTopics);
+      .then(getTopics);
   };
   
     // Delete a topic from the database

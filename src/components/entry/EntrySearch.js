@@ -1,11 +1,13 @@
 import React, { useContext, useEffect} from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
-import { CommonplaceContext } from "./CommonplaceProvider"
+import { CommonplaceContext } from "../provider/CommonplaceProvider"
 import "./Commonplace.css"
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from "react-bootstrap/Container";
 import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom"
+
 
 export const EntrySearch = () => {
   // const { getApiMovies, apiMovies, getApiMovieById} = useContext(MovieContext)
@@ -34,19 +36,21 @@ export const EntrySearch = () => {
 
   return (
     <>
-      <h1>Entries</h1>
+      {/* <h1>Entries</h1>
         <ul>
           {
             entries.map(entry =>
-              <li>{entry.title}</li>
+              <li key={entry.id}>
+                <Link className="text-black" to={`/entries/detail/${entry.id}`}>{entry.title}</Link>
+              </li>
             )
           }
-        </ul>
-      {/* <Container className="text-center">
-        <h1 className="page_title">Movie Logger</h1>
-        <Form className="search_form text-center" onSubmit={searchResults}>
+        </ul> */}
+      <Container className="text-center">
+        <h1 className="page_title"></h1>
+        <Form className="search_form text-center" >
           <Form.Group className="mb-3">
-            <Form.Control type="text" placeholder="Movie Search" />
+            <Form.Control type="text" placeholder="Entry Search" />
           </Form.Group>
           <Button className="search_button" variant="dark" type="submit">
             Submit
@@ -55,17 +59,15 @@ export const EntrySearch = () => {
       </Container>
       <div className="search_list">
         {
-          apiMovies.map(apiMovie =>
-            <Card className="search_card" style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={ `https://image.tmdb.org/t/p/original/${apiMovie.poster_path}`}/>
+          entries.map(entry =>
+            <Card key={entry.id} className="search_card" style={{ width: '18rem' }}>
               <Card.Body className="text-center">
-                <Card.Title>{apiMovie.original_title}</Card.Title>
-                <Button id={apiMovie.id} onClick={addMovie} variant="dark">Add New Movie</Button>
+                <Link className="text-black" to={`/entries/detail/${entry.id}`}>{entry.title}</Link>
               </Card.Body>
             </Card>
             )
         }
-        </div> */}
+        </div>
     </>
   )
 }

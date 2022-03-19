@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { useHistory } from 'react-router-dom';
 import { CommonplaceContext } from "../provider/CommonplaceProvider.js"
 import "./Commonplace.css"
@@ -7,14 +7,19 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 export const EditEntryForm = () => {
-  const { editEntry, entryById } = useContext(CommonplaceContext)
+  const { editEntry, entryById, topics, getTopics} = useContext(CommonplaceContext)
   const history = useHistory();
+
+  useEffect(() => {
+    getTopics()
+  }, [])
 
   // Create new object for form to update and add to database
   const [entryToEdit, setEntryToEdit] = useState({
     id: entryById.id,
     title: entryById.title,
-    body: entryById.body
+    body: entryById.body,
+    entry_topics: []
   });
 
   // Update entryToEdit object with values entered into form inputs
@@ -27,9 +32,12 @@ export const EditEntryForm = () => {
   // Edit entry object in database, then change page to the Entry Detail page
   const handleClickEditEntry = (event) => {
     event.preventDefault()
-    const entry = entryToEdit
-    editEntry(entry).then(() => history.push(`entries/detail/${entry.id}`))
+    editEntry(entryToEdit).then(() => history.push(`/entries/detail/${entryToEdit.id}`))
     }
+  
+  const handleEntryTopicsPush = (event) => {
+    entryToEdit.entry_topics.push(event.target.id)
+  }  
 
   return (
     <div className="form">
@@ -44,6 +52,12 @@ export const EditEntryForm = () => {
         <Form.Group className="mb-3">
           <Form.Control type="text" id="body" placeholder="Body" value={entryToEdit.body} onChange={handleControlledInputChange} />
         </Form.Group>
+        
+        <div>
+          {topics.map(topic =>
+            <Form.Check key={topic.id} type="checkbox" id={topic.id} label={topic.name} onClick={handleEntryTopicsPush}/>
+          )}
+        </div>
         
         <Button variant="dark" type="submit" onClick={handleClickEditEntry}>
           Save Entry

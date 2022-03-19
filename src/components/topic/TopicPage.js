@@ -77,9 +77,6 @@ export const TopicPage = () => {
     </div>
       <div className="movie_list text-center">
         {
-          console.log(topics)
-}
-{
           topics.map(topic =>
             <Card key={topic.id} className="movie_card" style={{ width: '18rem' }}>
               <Card.Body>
