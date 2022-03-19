@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Commonplace
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The goal of this project was to create a customizable system for commonplacing, the process of maintaining a personal encyclopedia. Like a lot of writers, I commonplace using notebooks, but I wanted to simplify the process of indexing/searching for specific entries.
 
-## Available Scripts
+The user can create, update, and delete entries, and view their entries on the home page of the app. They can create topics of their choice and tag each entry with as many topics as they would like. They can then search existing entries by title or keyword, and filter the results by alphabetical order, date created, and/or topic.
 
-In the project directory, you can run:
+Future features will include:
+- the ability to view the next/last entry by alphabetical order or date created from the entry detail page
+- the ability to link related entries together and view them in a list on the entry detail page
+- the ability to upload photos for an entry
 
-### `npm start`
+This project was an exercise in how to build and interact with my own API. Django is a little daunting, so it took some time to adjust to writing the back-end code. Eventually, it was satisfying to figure out to get it to respond with exactly what I needed on the client side!
+
+### Technologies Used
+1. Javascript
+2. React.js
+3. React Bootstrap
+4. Python
+5. Django
+6. SQLite
+
+### ERD
+
+https://dbdiagram.io/d/6217b0c1485e43354310fe16
+
+### Install Instructions
+
+Open a terminal window and go to the `commonplace-client` directory.
+
+1. `npm install react-scripts`
+2. `npm install`
+
+### Starting the server
+
+Go to https://github.com/emmameiervogel/commonplace-server and follow install instructions for the server.
+
+Open a terminal window and go to the `commonplace-server` directory.
+
+1. `pipenv shell`
+2. `python3 manage.py runserver`
+
+### Starting the app in development mode
+
+Open a terminal window and go to the `commonplace-client` directory.
+
+1. `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
