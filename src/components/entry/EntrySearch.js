@@ -22,7 +22,7 @@ export const EntrySearch = () => {
   // const searchResults = (event) => {
   //   event.preventDefault()
   //   if (event.target[0].value !== "") {
-  //   getApiMovies(event.target[0].value)
+  //   getEntry(event.target[0].value)
   //   } else {
   //     window.alert("Please enter a movie title")
   //   }
