@@ -10,7 +10,7 @@ export const CommonplaceProvider = (props) => {
 
   // Get saved entries from database
   const getEntries = () => {
-    return fetch("http://localhost:8000/entries", {
+    return fetch(`http://localhost:8000/entries`, {
       headers: {
         Authorization: `Token ${localStorage.getItem("lu_token")}`,
       },
@@ -40,12 +40,12 @@ export const CommonplaceProvider = (props) => {
       },
       body: JSON.stringify(entryObj)
     })
-    .then((response) => response.json())
-    .then((entryObj) => {
-      getEntries()
-      return entryObj
-    });
-};
+      .then((response) => response.json())
+      .then((entryObj) => {
+        getEntries()
+        return entryObj
+      });
+  };
 
   // Delete an entry from the database
   const deleteEntry = entry => {
@@ -71,58 +71,47 @@ export const CommonplaceProvider = (props) => {
       .then(getEntries)
   }
 
-    // Get saved topics from database
-    const getTopics = () => {
-      return fetch("http://localhost:8000/topics", {
-        headers: {
-          Authorization: `Token ${localStorage.getItem("lu_token")}`,
-        },
-      })
-        .then((response) => response.json())
-        .then(setTopics);
-    };
-  
-    // // Get an entry from the database by an id
-    // const getEntryById = (entry) => {
-    //   return fetch(`http://localhost:8000/entries/${entry.id}`, {
-    //     headers: {
-    //       Authorization: `Token ${localStorage.getItem("lu_token")}`,
-    //     },
-    //   })
-    //     .then(res => res.json())
-    //     .then(setEntryById)
-    // }
-  
-    // Add a topic to the database
-    const addTopic = topicObj => {
-      return fetch("http://localhost:8000/topics", {
-        method: "POST",
-        headers: {
-          Authorization: `Token ${localStorage.getItem("lu_token")}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(topicObj)
-      })
+  // Get saved topics from database
+  const getTopics = () => {
+    return fetch("http://localhost:8000/topics", {
+      headers: {
+        Authorization: `Token ${localStorage.getItem("lu_token")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then(setTopics);
+  };
+
+  // Add a topic to the database
+  const addTopic = topicObj => {
+    return fetch("http://localhost:8000/topics", {
+      method: "POST",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("lu_token")}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(topicObj)
+    })
       .then((response) => response.json())
       .then(getTopics);
   };
-  
-    // Delete a topic from the database
-    const deleteTopic = topicId => {
-      return fetch(`http://localhost:8000/topics/${topicId}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Token ${localStorage.getItem("lu_token")}`,
-        },
-      })
-        .then(getTopics)
-    }
-  
+
+  // Delete a topic from the database
+  const deleteTopic = topicId => {
+    return fetch(`http://localhost:8000/topics/${topicId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("lu_token")}`,
+      },
+    })
+      .then(getTopics)
+  }
+
   return (
     <CommonplaceContext.Provider value={{
-      entries, getEntries, addEntry, 
-      deleteEntry, editEntry, getEntryById, 
-      setEntryById, entryById, topics, 
+      entries, getEntries, addEntry,
+      deleteEntry, editEntry, getEntryById,
+      setEntryById, entryById, topics,
       getTopics, addTopic, deleteTopic
     }}>
       {props.children}

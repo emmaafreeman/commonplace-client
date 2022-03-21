@@ -41,7 +41,7 @@ export const EntryDetail = () => {
             <p>{entryById?.body}</p>
             <div>
               {
-                entryById.entry_topics.map(topic =>
+                entryById?.entry_topics?.map(topic =>
                   <Card key={topic.id} className="search_card" style={{ width: '18rem' }}>
                     <Card.Body className="text-center">
                     <Card.Title>{topic?.name}</Card.Title>
