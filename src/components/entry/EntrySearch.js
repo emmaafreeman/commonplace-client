@@ -16,7 +16,8 @@ export const EntrySearch = () => {
 
   useEffect(() => {
     getEntries()
-  }, [])
+  }, []);
+
 
   // Establishes search results as value of search bar and prevents user from entering blank search
   const searchResults = (event) => {

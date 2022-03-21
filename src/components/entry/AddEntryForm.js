@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect} from "react"
 import { useHistory } from 'react-router-dom';
 import { CommonplaceContext } from "../provider/CommonplaceProvider.js"
 import "./Commonplace.css"
@@ -7,13 +7,18 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 export const AddEntryForm = () => {
-  const { addEntry } = useContext(CommonplaceContext)
+  const { addEntry, topics, getTopics } = useContext(CommonplaceContext)
   const history = useHistory();
+
+  useEffect(() => {
+    getTopics()
+  }, [])
 
   // Create new object for form to update and add to database
   const [newEntry, setNewEntry] = useState({
     title: "",
-    body: ""
+    body: "",
+    entry_topics: []
   });
 
   // Update newEntry object with values entered into form inputs
@@ -26,9 +31,12 @@ export const AddEntryForm = () => {
   // Add newEntry object to database, then change page to the Entry Detail page
   const handleClickSaveEntry = (event) => {
     event.preventDefault()
-    const entry = newEntry
-    addEntry(entry).then(() => history.push(`/entries/detail/${entry.id}`))
+    addEntry(newEntry).then((entry) => history.push(`/entries/detail/${entry.id}`))
     }
+
+  const handleEntryTopicsPush = (event) => {
+    newEntry.entry_topics.push(event.target.id)
+  }
 
   return (
     <div className="form">
@@ -43,6 +51,12 @@ export const AddEntryForm = () => {
         <Form.Group className="mb-3">
           <Form.Control type="text" id="body" placeholder="Body" value={newEntry.body} onChange={handleControlledInputChange} />
         </Form.Group>
+        
+        <div>
+          {topics.map(topic =>
+            <Form.Check key={topic.id} type="checkbox" id={topic.id} label={topic.name} onClick={handleEntryTopicsPush}/>
+          )}
+        </div>
         
         <Button variant="dark" type="submit" onClick={handleClickSaveEntry}>
           Save Entry
