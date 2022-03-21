@@ -7,6 +7,7 @@ export const CommonplaceProvider = (props) => {
   const [entries, setEntries] = useState([])
   const [entryById, setEntryById] = useState({})
   const [topics, setTopics] = useState([])
+  const [searchResults, setSearchResults] = useState([])
 
   // Get saved entries from database
   const getEntries = () => {
@@ -28,6 +29,17 @@ export const CommonplaceProvider = (props) => {
     })
       .then(res => res.json())
       .then(setEntryById)
+  }
+
+  // Get entries by using search terms as a query
+  const searchEntries = (query) => {
+    return fetch(`http://localhost:8000/entries?title=${query}&body=${query}`, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem("lu_token")}`,
+      },
+    })
+      .then(res => res.json())
+      .then(data => setSearchResults(data))
   }
 
   // Add an entry to the database
@@ -112,7 +124,8 @@ export const CommonplaceProvider = (props) => {
       entries, getEntries, addEntry,
       deleteEntry, editEntry, getEntryById,
       setEntryById, entryById, topics,
-      getTopics, addTopic, deleteTopic
+      getTopics, addTopic, deleteTopic,
+      searchResults, setSearchResults, searchEntries
     }}>
       {props.children}
     </CommonplaceContext.Provider>
