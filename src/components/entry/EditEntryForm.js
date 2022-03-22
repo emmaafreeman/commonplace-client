@@ -10,6 +10,7 @@ export const EditEntryForm = () => {
   const { editEntry, entryById, topics, getTopics} = useContext(CommonplaceContext)
   const history = useHistory();
 
+  // Get all existing topics associated with logged-in user
   useEffect(() => {
     getTopics()
   }, [])
@@ -35,6 +36,7 @@ export const EditEntryForm = () => {
     editEntry(entryToEdit).then(() => history.push(`/entries/detail/${entryToEdit.id}`))
     }
   
+  // When checkbox is clicked, value is added to entryToEdit object
   const handleEntryTopicsPush = (event) => {
     entryToEdit.entry_topics.push(event.target.id)
   }  

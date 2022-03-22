@@ -1,5 +1,5 @@
 import React, { useContext, useEffect} from "react"
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { Link, useHistory} from "react-router-dom"
 import { CommonplaceContext } from "../provider/CommonplaceProvider"
 import "./Commonplace.css"
 import Form from 'react-bootstrap/Form';
@@ -10,16 +10,20 @@ import { Link } from "react-router-dom"
 
 
 export const EntrySearch = () => {
-  // const { getApiMovies, apiMovies, getApiMovieById} = useContext(MovieContext)
-  const history = useHistory()
   const { entries, getEntries, setSearchResults, searchResults, searchEntries } = useContext(CommonplaceContext)
+  
+  // Ternary to display either all user entries or the list of search results
   const searchList = searchResults ? true : false
+  
+  // Null variable to set search results with when page loads
   const initialSearchResults = null
 
+  // Get all existing entries associated with logged-in user
   useEffect(() => {
     getEntries()
   }, []);
 
+  // Sets searchResults array with null variable on page render so that entries array displays first
   useEffect(() => {
     setSearchResults(initialSearchResults)
   }, []);
