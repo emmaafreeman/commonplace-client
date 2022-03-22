@@ -10,6 +10,7 @@ export const AddEntryForm = () => {
   const { addEntry, topics, getTopics } = useContext(CommonplaceContext)
   const history = useHistory();
 
+  // Get all existing topics associated with logged-in user
   useEffect(() => {
     getTopics()
   }, [])
@@ -34,6 +35,7 @@ export const AddEntryForm = () => {
     addEntry(newEntry).then((entry) => history.push(`/entries/detail/${entry.id}`))
     }
 
+  // When checkbox is clicked, value is added to newEntry object
   const handleEntryTopicsPush = (event) => {
     newEntry.entry_topics.push(event.target.id)
   }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import { CommonplaceContext } from "../provider/CommonplaceProvider"
 import "./Commonplace.css"
@@ -25,7 +25,7 @@ export const EntryDetail = () => {
       })
   }
 
-  // Finds the entry object in database, then allows user to edit by changing page to Edit Movie Form
+  // Finds the entry object in database, then changes to Edit Form
   const editThisEntry = (event) => {
     getEntryById(entryById.id).then(() => {
       history.push(`/entries/edit/${event.target.id}`)

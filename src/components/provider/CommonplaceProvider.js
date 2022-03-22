@@ -9,7 +9,7 @@ export const CommonplaceProvider = (props) => {
   const [topics, setTopics] = useState([])
   const [searchResults, setSearchResults] = useState([])
 
-  // Get saved entries from database
+  // Get saved entries from database then set entries array with response
   const getEntries = () => {
     return fetch(`http://localhost:8000/entries`, {
       headers: {
@@ -31,7 +31,7 @@ export const CommonplaceProvider = (props) => {
       .then(setEntryById)
   }
 
-  // Get entries by using search terms as a query
+  // Get entries by using search terms as a parameter to keyword search either the title or body of an entry
   const searchEntries = (query) => {
     return fetch(`http://localhost:8000/entries?title=${query}&body=${query}`, {
       headers: {
@@ -60,8 +60,8 @@ export const CommonplaceProvider = (props) => {
   };
 
   // Delete an entry from the database
-  const deleteEntry = entry => {
-    return fetch(`http://localhost:8000/entries/${entry.id}`, {
+  const deleteEntry = entryObj => {
+    return fetch(`http://localhost:8000/entries/${entryObj.id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Token ${localStorage.getItem("lu_token")}`,
@@ -71,14 +71,14 @@ export const CommonplaceProvider = (props) => {
   }
 
   // Edit an entry object within database
-  const editEntry = entry => {
-    return fetch(`http://localhost:8000/entries/${entry.id}`, {
+  const editEntry = entryObj => {
+    return fetch(`http://localhost:8000/entries/${entryObj.id}`, {
       method: "PUT",
       headers: {
         Authorization: `Token ${localStorage.getItem("lu_token")}`,
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(entry)
+      body: JSON.stringify(entryObj)
     })
       .then(getEntries)
   }

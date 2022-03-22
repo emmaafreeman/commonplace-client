@@ -13,6 +13,7 @@ export const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault()
 
+    // If both password fields match, create newUser object from form values
     if (password.current.value === verifyPassword.current.value) {
       const newUser = {
         "username": username.current.value,
@@ -21,6 +22,7 @@ export const Register = () => {
         "password": password.current.value
       }
 
+      // Post newUser object to database, then save token to local storage
       return fetch("http://127.0.0.1:8000/register", {
         method: "POST",
         headers: {

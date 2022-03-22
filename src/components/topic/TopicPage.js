@@ -11,10 +11,12 @@ export const TopicPage = () => {
   const { topics, getTopics, deleteTopic, addTopic } = useContext(CommonplaceContext)
   const history = useHistory()
 
+  // Get all existing topics associated with logged-in user
   useEffect(() => {
     getTopics()
   }, [])
 
+  // Create new object for form to update and add to database
   const [newTopic, setNewTopic] = useState({
     name: ""
   });
@@ -26,35 +28,18 @@ export const TopicPage = () => {
     setNewTopic(newTopicToAdd)
   }
 
-  // // Add newTopic object to database, then change page to the Entry Detail page
-  // const handleClickSaveTopic = (event) => {
-  //   event.preventDefault()
-  //   const topic = newTopic
-  //   addTopic(topic)
-  //     .then(getTopics())
-  //       // .then(() => history.push(`/topics`))
-  // }
-
-  // Add newEntry object to database, then change page to the Entry Detail page
+  // Add newTopic object to database, then re-render Topics page
   const handleClickSaveTopic = (event) => {
     event.preventDefault()
     const topic = newTopic
     addTopic(topic).then(() => history.push(`/topics`))
     }
 
-  
-
+  // Delete a topic from database
   const deleteThisTopic = (event) => {
     deleteTopic(parseInt(event?.target?.id))
   }
   
-  // const deleteThisEntry = () => {
-  //   deleteEntry(entryById)
-  //     .then(() => {
-  //       history.push("/")
-  //     })
-  // }
-
   return (
     <>
       <Container className="text-center">

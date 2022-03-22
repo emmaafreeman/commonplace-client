@@ -11,6 +11,7 @@ export const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault()
 
+    // Post log in to database and set token in local storage
     return fetch("http://127.0.0.1:8000/login", {
       method: "POST",
       headers: {
