@@ -4,7 +4,6 @@ import { ApplicationViews } from "./ApplicationViews"
 import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
-import { Footer } from "./footer/Footer"
 
 export const Commonplace = () => (
   <>
@@ -14,7 +13,6 @@ export const Commonplace = () => (
           <Route>
             <NavBar />
             <ApplicationViews />
-            <Footer />
           </Route>
         </>
       } else {

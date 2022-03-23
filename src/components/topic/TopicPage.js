@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import { useHistory } from 'react-router-dom'
 import { CommonplaceContext } from "../provider/CommonplaceProvider"
+import '../Commonplace.css'
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -33,38 +34,33 @@ export const TopicPage = () => {
     event.preventDefault()
     const topic = newTopic
     addTopic(topic).then(() => history.push(`/topics`))
-    }
+  }
 
   // Delete a topic from database
   const deleteThisTopic = (event) => {
     deleteTopic(parseInt(event?.target?.id))
   }
-  
+
   return (
     <>
-      <Container className="text-center">
-        <h1 className="page_title">Topics</h1>
-      </Container>
-      <div className="form">
-        <Container>
-          <Form className="text-center">
-            <h2 className="page_title"> Add New Topic </h2>
+      <Container className="form">
+        <Form className="text-center">
+          <h2 className="page_title"> Add New Topic </h2>
 
-            <Form.Group className="mb-3">
-              <Form.Control type="text" id="name" placeholder="Topic name" value={newTopic.name} onChange={handleControlledInputChange} />
-            </Form.Group>
-            
-            <Button variant="dark" type="submit" onClick={handleClickSaveTopic}>
-              Save Topic
-            </Button>
-          </Form>
-        </Container>
-    </div>
-      <div className="movie_list text-center">
+          <Form.Group className="mb-3">
+            <Form.Control type="text" id="name" placeholder="Topic name" value={newTopic.name} onChange={handleControlledInputChange} />
+          </Form.Group>
+
+          <Button variant="dark" type="submit" onClick={handleClickSaveTopic}>
+            Save Topic
+          </Button>
+        </Form>
+      </Container>
+      <div className="search_list">
         {
           topics.map(topic =>
-            <Card key={topic.id} className="movie_card" style={{ width: '18rem' }}>
-              <Card.Body>
+            <Card key={topic.id} className="search_card" style={{ width: '18rem' }}>
+              <Card.Body className="text-center">
                 <Card.Title>{topic?.name}</Card.Title>
                 <Button id={topic?.id} onClick={deleteThisTopic} variant="dark">Delete</Button>
               </Card.Body>

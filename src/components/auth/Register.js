@@ -1,5 +1,7 @@
 import React, { useRef } from "react"
 import { Link, useHistory } from "react-router-dom"
+import { Container, Form, Button } from "react-bootstrap"
+
 
 export const Register = () => {
   const firstName = useRef()
@@ -51,37 +53,38 @@ export const Register = () => {
         <button className="button--close" onClick={e => passwordDialog.current.close()}>Close</button>
       </dialog>
 
-      <form className="form--login" onSubmit={handleRegister}>
-        <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
-        <fieldset>
-          <label htmlFor="firstName"> First Name </label>
-          <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="lastName"> Last Name </label>
-          <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="inputUsername">Username</label>
-          <input ref={username} type="text" name="username" className="form-control" placeholder="Username" required />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="inputPassword"> Password </label>
-          <input ref={password} type="password" name="password" className="form-control" placeholder="Password" required />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="verifyPassword"> Verify Password </label>
-          <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
-        </fieldset>
-        <fieldset style={{
-          textAlign: "center"
-        }}>
-          <button className="btn btn-1 btn-sep icon-send" type="submit">Register</button>
-        </fieldset>
-      </form>
-      <section className="link--register">
-        Already registered? <Link to="/login">Login</Link>
-      </section>
+      <Container>
+        <Form className="text-center">
+          <h2 className="page_title"> Register </h2>
+          <Form.Group className="mb-3">
+            <Form.Control ref={firstName} type="text" id="firstName" placeholder="First name" />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Control ref={lastName} type="text" id="lastName" placeholder="Last name" />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Control ref={username} type="text" id="username" placeholder="Username" />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Control ref={password} type="text" id="password" placeholder="Password" />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Control ref={verifyPassword} type="text" id="verifyPassword" placeholder="Verify password" />
+          </Form.Group>
+
+          <Button variant="dark" type="submit" onClick={handleRegister}>
+            Register
+          </Button>
+        </Form>
+      </Container>
+
+      <div className="text-center">
+        Already registered? <Link className="form_link" to="/login">Login</Link>
+      </div>
     </main>
   )
 }

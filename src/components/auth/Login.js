@@ -1,5 +1,7 @@
 import React, { useRef } from "react"
+import { Container, Form, Button } from "react-bootstrap"
 import { Link, useHistory } from "react-router-dom"
+import "../Commonplace.css"
 
 
 export const Login = () => {
@@ -41,28 +43,26 @@ export const Login = () => {
         <div>Username or password was not valid.</div>
         <button className="button--close" onClick={e => invalidDialog.current.close()}>Close</button>
       </dialog>
-      <section>
-        <form className="form--login" onSubmit={handleLogin}>
-          <h1>Commonplace</h1>
-          <h2>Please sign in</h2>
-          <fieldset>
-            <label htmlFor="inputUsername"> Username </label>
-            <input ref={username} type="username" id="username" className="form-control" placeholder="Username address" required autoFocus />
-          </fieldset>
-          <fieldset>
-            <label htmlFor="inputPassword"> Password </label>
-            <input ref={password} type="password" id="password" className="form-control" placeholder="Password" required />
-          </fieldset>
-          <fieldset style={{
-            textAlign: "center"
-          }}>
-            <button className="btn btn-1 btn-sep icon-send" type="submit">Sign In</button>
-          </fieldset>
-        </form>
-      </section>
-      <section className="link--register">
-        <Link to="/register">Not a member yet?</Link>
-      </section>
+      <Container>
+
+        <Form className="text-center">
+          <h2 className="page_title"> Commonplace </h2>
+
+          <Form.Group className="mb-3">
+            <Form.Control ref={username} type="username" id="username" placeholder="Username" />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Control ref={password} type="password" id="password" placeholder="Password" />
+          </Form.Group>
+          <Button variant="dark" type="submit" onClick={handleLogin}>
+            Log In
+          </Button>
+        </Form>
+      </Container>
+      <div className="text-center">
+        <Link className="form_link" to="/register">Not a member yet?</Link>
+      </div>
     </main>
   )
 }
