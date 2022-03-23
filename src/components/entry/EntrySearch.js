@@ -1,12 +1,11 @@
 import React, { useContext, useEffect} from "react"
 import { Link, useHistory} from "react-router-dom"
 import { CommonplaceContext } from "../provider/CommonplaceProvider"
-import "./Commonplace.css"
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Container from "react-bootstrap/Container";
-import Card from 'react-bootstrap/Card';
-import { Link } from "react-router-dom"
+import "../Commonplace.css"
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Container from "react-bootstrap/Container"
+import Card from 'react-bootstrap/Card'
 
 
 export const EntrySearch = () => {

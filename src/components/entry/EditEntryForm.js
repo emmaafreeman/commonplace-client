@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from "react"
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'
 import { CommonplaceContext } from "../provider/CommonplaceProvider.js"
-import "./Commonplace.css"
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import "../Commonplace.css"
+import Container from "react-bootstrap/Container"
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
 
 export const EditEntryForm = () => {
   const { editEntry, entryById, topics, getTopics} = useContext(CommonplaceContext)
@@ -52,14 +52,14 @@ export const EditEntryForm = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Control type="text" id="body" placeholder="Body" value={entryToEdit.body} onChange={handleControlledInputChange} />
+          <Form.Control as="textarea" className="form_body" type="text" id="body" placeholder="Body" value={entryToEdit.body} onChange={handleControlledInputChange} />
         </Form.Group>
         
-        <div>
+        <Form.Group className="mb-3 form_check_list">
           {topics.map(topic =>
-            <Form.Check key={topic.id} type="checkbox" id={topic.id} label={topic.name} onClick={handleEntryTopicsPush}/>
+            <Form.Check className="form_check" key={topic.id} type="checkbox" id={topic.id} label={topic.name} onClick={handleEntryTopicsPush}/>
           )}
-        </div>
+        </Form.Group>
         
         <Button variant="dark" type="submit" onClick={handleClickEditEntry}>
           Save Entry

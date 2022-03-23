@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import { CommonplaceContext } from "../provider/CommonplaceProvider"
-import "./Commonplace.css"
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
+import "../Commonplace.css"
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 
 export const EntryDetail = () => {
   const { deleteEntry, getEntryById, entryById } = useContext(CommonplaceContext)
@@ -35,17 +35,15 @@ export const EntryDetail = () => {
   return (
     <>
       <Container className="detail text-center d-flex">
-        <Card className="detail_card d-flex mx-auto" style={{ width: '18rem' }}>
+        <Card className="detail_card d-flex mx-auto">
           <Card.Body>
             <Card.Title>{entryById?.title}</Card.Title>
             <p>{entryById?.body}</p>
-            <div>
+            <div className="detail_card_topics">
               {
                 entryById?.entry_topics?.map(topic =>
-                  <Card key={topic.id} className="search_card" style={{ width: '18rem' }}>
-                    <Card.Body className="text-center">
-                    <Card.Title>{topic?.name}</Card.Title>
-                    </Card.Body>
+                  <Card key={topic.id} className="detail_card_topic text-center">
+                    <Card.Text>{topic?.name}</Card.Text>
                   </Card>
                 )
               }

@@ -1,2 +1,61 @@
-/* Import the google web fonts you want to use */
 @import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+
+.search_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 7rem;
+}
+
+.search_card {
+  margin: 10px;
+}
+
+.page_title {
+  margin: 2rem;
+}
+
+.form_button {
+  margin: 1rem;
+}
+
+.detail {
+  padding-bottom: 7rem;
+}
+
+.detail_card {
+  margin: 2rem;
+  width: 95%;
+}
+
+.detail_card_topics {
+  display: flex;
+  justify-content: center;
+}
+
+.detail_card_topic {
+  width: fit-content;
+  padding: 5px;
+  margin: 10px;
+}
+
+.form {
+  padding-bottom: 7rem;
+}
+
+.form_body {
+  height: 300px;
+}
+
+.form_check_list {
+  display: flex;
+  justify-content: center;
+}
+
+.form_check {
+  margin: 10px;
+}
+
+.form_link {
+  color: black;
+}
